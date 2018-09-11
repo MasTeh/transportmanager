@@ -1,0 +1,53 @@
+<!-- Top Navbar-->
+
+<div class="pages">
+  <div data-page="transport_admin" class="page" id="transport_admin">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <!-- Left part doesn't related to other pages, let's fade it out -->
+        <div class="left sliding">
+          <a href="#" class="link back"><i class="icon icon-back"></i></a>
+        </div>
+        <div class="center sliding navbar-text">
+          Транспорт
+        </div>
+        <div class="right sliding">
+          <a href="add_transport.desktop.html" class="button button-big button-fill">Добавить</a>
+        </div>
+      </div>
+    </div>
+    <div class="page-content">
+
+      <content></content>
+
+      <template>
+      <div style="padding: 10%; margin: auto !important;">
+
+
+
+        {{#each this}}
+        <div class="row">
+          <div class="col-10" style="padding: 7px; font-weight: bold;">{{number}}</div>
+          <div class="col-20" style="padding: 7px">{{model}}</div>
+          <div class="col-20" style="padding: 7px">{{company_name}}</div>
+          <div class="col-10">
+            <a href="add_transport.desktop.html?id={{id}}" class="button"><i class="f7-icons icon">compose</i></a>
+          </div>
+          <div class="col-10">
+            <a href="#" owner="transport" item-id="{{id}}" class="button remove-item"><i class="f7-icons icon">close</i></a>
+          </div>
+        </div>
+        {{/each}}
+
+
+      </div>
+      </template>
+
+
+
+    </div>
+
+
+    </div>
+  </div>
+</div>          

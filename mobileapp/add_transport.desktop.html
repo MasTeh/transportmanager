@@ -1,0 +1,113 @@
+<!-- Top Navbar-->
+
+<div class="pages">
+  <div data-page="add_transport" class="page" id="add_transport_page">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <!-- Left part doesn't related to other pages, let's fade it out -->
+        <div class="left sliding">
+          <a href="#" class="link back"><i class="icon icon-back"></i></a>
+        </div>
+        <div class="center sliding navbar-text">
+          Транспорт
+        </div>
+        <div class="right sliding">
+          <a href="#" class="button button-big button-fill submit-btn" onPress="orders.addTransport()">Добавить</a>
+        </div>
+      </div>
+    </div>
+    <div class="page-content">
+
+
+      <div style="width: 600px; margin: auto !important;">
+      <form id="add_transport">
+
+
+        <div class="list-block" style="padding: 10px">
+
+          <ul>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Номер</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <input type="text" value="" placeholder="номер" name="number">
+                </div>
+              </div>
+            </li>
+
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Модель</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <input type="text" value="" placeholder="модель" name="model">
+                </div>
+              </div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Компания</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <select name="company_id">
+                  </select>
+                </div>
+              </div>
+            </li>
+
+
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Это наша машина?</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <select name="type">
+                    <option value="1">Да</option>
+                    <option value="2">Нет</option>
+                  </select>
+                </div>
+              </div>
+            </li>
+
+
+          </ul>
+        </div>
+
+
+
+
+
+
+        <div class="error" style="display:none; padding:10px; clear:both"></div>
+
+
+
+        <div style="padding: 10px">
+
+          <input type="hidden" name="is_update" value="0">
+
+          <a href="#" class="button button-big button-fill submit-btn" onPress="orders.addTransport()">Добавить</a>
+
+        </div>
+        <div style="height: 30px"></div>
+
+      </form>
+      </div>
+
+
+
+    </div>
+
+
+    </div>
+  </div>
+</div>          

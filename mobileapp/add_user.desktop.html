@@ -1,0 +1,88 @@
+<!-- Top Navbar-->
+
+<div class="pages">
+  <div data-page="add_user" class="page" id="add_user_page">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <!-- Left part doesn't related to other pages, let's fade it out -->
+        <div class="left sliding">
+          <a href="#" class="link back"><i class="icon icon-back"></i></a>
+        </div>
+        <div class="center sliding navbar-text">
+          Пользователь
+        </div>
+        <div class="right sliding">
+          <a href="#" class="button button-big button-fill submit-btn" onPress="user.addUser()">Добавить</a>
+        </div>
+      </div>
+    </div>
+    <div class="page-content">
+
+
+      <div style="width: 600px; margin: auto !important;">
+      <form id="add_user">
+
+
+        <div class="list-block" style="padding: 10px">
+
+          <ul>
+
+
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Логин</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <input type="text" value="" placeholder="без пробелов" class="check_user" name="login">
+                </div>
+                <div style="color:red; font-size: 12px; display: none" class="user_exist_label">Уже есть такой</div>
+              </div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Пароль</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <input type="text" value="" placeholder="пароль" name="password">
+                </div>
+              </div>
+            </li>
+
+
+
+          </ul>
+        </div>
+
+
+
+
+
+
+        <div class="error" style="display:none; padding:10px; clear:both"></div>
+
+
+
+        <div style="padding: 10px">
+
+          <input type="hidden" name="is_update" value="0">
+
+          <a href="#" class="button button-big button-fill submit-btn" onPress="user.addUser()">Добавить</a>
+
+        </div>
+        <div style="height: 30px"></div>
+
+      </form>
+      </div>
+
+
+
+    </div>
+
+
+    </div>
+  </div>
+</div>          

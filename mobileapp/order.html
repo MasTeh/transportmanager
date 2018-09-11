@@ -1,0 +1,167 @@
+<!-- Top Navbar-->
+
+<div class="pages">
+  <div data-page="order" class="page" id="order">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <!-- Left part doesn't related to other pages, let's fade it out -->
+        <div class="left sliding">
+          <a href="#" class="link back"><i class="icon icon-back"></i></a>
+        </div>
+        <div class="center sliding navbar-text">
+
+        </div>
+        <div class="right sliding">
+
+        </div>
+      </div>
+    </div>
+    <div class="page-content">
+
+      <content>
+      </content>
+
+      <template>
+
+        <div class="row manager-block" style="display: none">
+          <div class="col-50">
+            <a href="#" owner="orders" item-id="{{id}}" class="button remove-item manager-button">Снять заявку</a>
+          </div>
+          <div class="col-50">
+            <a href="add_order.html?id={{id}}"  class="button manager-button">Редактировать</a>
+          </div>
+        </div>
+
+      <div style="padding: 10px">
+        <div class="car-name">
+          <div class="row">
+            <div class="col-15">
+              <img src="img/truck.png" style="width: 80%">
+            </div>
+            <div class="col-25">
+              <span style="font-size: 18px">{{transport.number}}</span>
+            </div>
+            <div class="col-40">
+              <span style="font-size: 12px">{{transport.name}}</span><br>
+            </div>
+            <div class="col-20">
+              <a href="tel:{{driver.phone}}" class="button phonelink driver-form" style="font-size: 10px"> <i class="f7-icons icon">phone</i></a>
+            </div>
+          </div>
+          <span style="font-size: 12px">{{transport.model}} {{driver.name}} {{driver.fam}}</span>
+        </div>
+        <div class="car-data">
+          <div class="row">
+            <div class="company-name col-70" style="font-size:16px; color:darkslategray">
+              {{unload_address}}
+            </div>
+            <div class="order-data col-30">{{date}}</div>
+          </div>
+
+          <div style="margin: 20px 0px">
+            <div style="padding-bottom: 5px">Погрузка</div>
+            <div class="cargo-in">
+              {{load_address}}
+              {{#if load_address2}}<br>{{load_address2}} {{/if}}
+              {{#if load_address3}}<br>{{load_address3}} {{/if}}
+              {{#if load_address4}}<br>{{load_address4}} {{/if}}
+              {{#if load_address5}}<br>{{load_address5}} {{/if}}
+            </div>
+            <a href="tel:{{load_phone}}" class="button phonelink" style="font-size: 12px">Позвонить на погрузку</a>
+          </div>
+
+          <div style="margin-bottom: 20px"><div style="padding-bottom: 5px">Выгрузка</div>
+            <div class="cargo-out">
+              {{unload_address}}
+            </div>
+            <a href="tel:{{unload_phone}}" class="button phonelink" style="font-size: 12px">Позвонить на выгрузку</a>
+          </div>
+
+          <div style="margin: 10px 0px">Тип груза: <b>{{cargo_type}}</b></div>
+
+          <div style="padding: 10px 0px; font-size:16px">
+            {{cargo_desc}}
+          </div>
+
+          <div style="padding: 10px 0px; font-size:16px">
+            <b>Количество часов: {{hours}}</b>
+          </div>
+
+          {{#if problem}}
+          <div style="padding: 15px 0px; font-size:16px; color: red">
+          <b>Проблема: {{problem}}</b>
+          </div>
+          {{/if}}
+
+          <div class="driver-zone" style="display: none">
+            {{#if is_setted}}
+            <a href="#" onPress="orders.start({{id}})" class="button button-big button-fill order_start">Начать выполнение</a>
+            {{/if}}
+            {{#if is_started}}
+            <a href="#" onPress="orders.finish({{id}})" class="button button-big button-fill color-green order_done">Завершить выполнение</a><br>
+            <a href="#" onPress="orders.problem({{id}})" class="button button-big button-fill color-red order_proble">Проблема с заявкой</a>
+            {{/if}}
+
+            {{#if is_cancel}}
+            <a href="#" onPress="orders.finish({{id}})" class="button button-big button-fill color-green order_done">Завершить выполнение</a><br>
+            <a href="#" onPress="orders.problem({{id}})" class="button button-big button-fill color-gray order_proble">Уточнить ситуацию</a>
+            {{/if}}
+
+
+          </div>
+
+          <div class="manager-zone" style="display: none">
+
+          <div>Стоимость заявки: <br>
+            <div class="row" style="padding: 0px">
+              <div class="col-70" style="font-size:18px; padding: 5px; color: #0D47A1">{{order_price}} руб</div>
+              <div class="col-30">
+                <a href="#" class="button manager-block" onPress="orders.changePrice1({{id}})"
+                   style="font-size: 10px; display: none"> <i class="f7-icons icon">compose</i></a>
+              </div>
+            </div>
+
+            <div class="row" style="padding: 0px; margin: 0px">
+              <div class="col-70 hour_price_label" style="padding: 5px; color: #0D47A1">{{hour_price}} руб/час</div>
+              <div class="col-30">
+                <a href="#" class="button manager-block" onPress="orders.changePrice2({{id}})"
+                   style="font-size: 10px; display: none"> <i class="f7-icons icon">compose</i></a>
+              </div>
+            </div>
+
+          </div>
+
+          </div>
+
+
+          <div style="margin: 30px 0px" class="desktop_file_upload">
+
+            <b>Загрузить файл</b>
+
+            <div style="width: 200px">
+            <input class="file_upload" order-id="{{id}}" type="file"><br>
+            </div>
+
+            <div class="photo_loader_preloader"></div>
+
+            <div class="order_images"></div>
+
+            <div style="clear: both"></div>
+            <div style="height: 50px"></div>
+
+
+          </div>
+
+
+        </div>
+      </div>
+
+      </template>
+
+
+    </div>
+
+
+    </div>
+  </div>
+</div>          

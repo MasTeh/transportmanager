@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Required meta tags-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>Логистика</title>
+
+
+  <link rel="stylesheet" href="css/framework7.material.css">
+  <link rel="stylesheet" href="css/framework7.material.colors.css">
+  <link rel="stylesheet" href="css/framework7-icons.css">
+
+  <link rel="stylesheet" href="css/app.css">
+
+</head>
+<body class="theme-bluegray" platform="android" station="mobile">
+
+
+<!--<div class="panel panel-left panel-reveal" style="background: #3a76a7">-->
+
+
+  <!--<div class="wrap">-->
+    <!--<div class="list-block slide-menu">-->
+      <!--<ul>-->
+        <!--<li>-->
+          <!--<a href="#" class="list-button item-link"><i class="f7-icons icon">persons</i><span>Личный кабинет</span></a>-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</div>-->
+  <!--</div>-->
+
+<!--</div>-->
+
+<!-- Views -->
+<div class="views">
+  <!-- Your main view, should have "view-main" class -->
+  <div class="view view-main">
+
+    <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+    <div class="pages navbar-fixed">
+      <!-- Page, "data-page" contains page name -->
+      <div data-page="home" class="page">
+
+        <!-- Top Navbar-->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <!-- Left part doesn't related to other pages, let's fade it out -->
+            <div class="left">
+              <div class="online-status"><div class="online"></div></div>
+              <div style="font-size: 14px; padding: 10px">ЗБТ Логистика</div>
+              <a href="#" class="link lk-hidden" onPress="user.logout()" style="font-size: 14px">выйти</a>
+
+
+
+            </div>
+            <div class="center" style="font-size: 14px; width: 10px !important">
+
+            </div>
+            <div class="right">
+
+
+
+              <a href="add_order.html" class="button add-order-button">Добавить заявку</a>
+
+            </div>
+          </div>
+          <div class="subnavbar">
+            <div class="left" id="day_of_week"></div>
+            <div class="right">
+              <div class="item-input">
+                <input type="date"  id="current_date" onChange="orders.getOrders()" name="date" value="">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="toolbar toolbar-bottom">
+          <div class="toolbar-inner">
+            <a href="#" class="link" onPress="orders.changePage('back')"><i class="f7-icons icon">arrow_left</i></a>
+            <a href="#" class="link" onPress="location.reload()"><i class="f7-icons icon">reload</i></a>
+            <a href="#" class="link" onPress="orders.changePage('forward')"><i class="f7-icons icon">arrow_right</i></a>
+          </div>
+        </div>
+
+
+        <div class="page-content" style="margin-top: 50px">
+
+          <div class="driver-zone" style="display: none"></div>
+
+
+            <div class="desk-zone"></div>
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="popup login">
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="center">Авторизация</div>
+      <div class="right">
+
+      </div>
+    </div>
+  </div>
+  <div class="content-block">
+
+
+    <div class="content-block-title category-name">Вход в личный кабинет</div>
+    <div class="list-block media-list">
+      <form id="login_form">
+        <ul>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-input">
+                  <input type="text" name="login" placeholder="Логин">
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-input">
+                  <input type="password" name="password" placeholder="Пароль">
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div style="padding:20px">
+          <a href="#" class="button button-big button-fill" onPress="user.loginAction()">Войти</a>
+        </div>
+      </form>
+    </div>
+
+
+
+  </div>
+</div>
+
+<div style="display: none" class="driver-template">
+
+
+
+  <!-- Timeline -->
+  <div class="timeline">
+
+
+    {{#each items}}
+
+    <div class="timeline-item">
+      <div class="timeline-item-date">
+        {{@key}}
+      </div>
+      <div class="timeline-item-divider"></div>
+      <div class="timeline-item-content">
+        {{#each this}}
+        <div class="timeline-item-inner">
+          <a href="order.html?id={{id}}">
+          <b>Заявка № {{id}}</b><br>
+          <div style="font-size: 12px">
+            <span style="color:blue">Машина номер: <b>{{transport_name}}</b></span><br>
+          Тип груза: {{cargo_type}}<br>
+          Описание: {{cargo_desc}}<br>
+            Компания: {{company_name}}<br>
+            Загрузка:<br> {{load_address}}<br>
+            {{#if load_address2}} {{load_address2}} {{/if}}
+            {{#if load_address3}}<br>{{load_address3}} {{/if}}
+            {{#if load_address4}}<br>{{load_address4}} {{/if}}
+            {{#if load_address5}}<br>{{load_address5}}<br> {{/if}}
+            Выгрузка: {{unload_address}}<br>
+            <b style="color:green">Количество часов: {{hours}}</b><br>
+            <div class="order-cell">
+            {{#if is_setted}}
+            <div class="status set">не выполнена</div>
+            {{/if}}
+            {{#if is_started}}
+            <div class="status active"><i class="f7-icons icon icon-small">fastforward_fill</i> в процессе</div>
+            {{/if}}
+            {{#if is_done}}
+            <div class="status done"><i class="f7-icons icon icon-small">check</i> выполнена</div>
+            {{/if}}
+            {{#if is_cancel}}
+              <div class="status" style="color:red"><i class="f7-icons icon icon-small">close</i> проблема</div>
+             {{/if}}
+
+              {{#if problem}}
+              <br><b>{{problem}}</b>
+              {{/if}}
+            </div>
+          </div>
+          </a>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+    {{/each}}
+
+  </div>
+</div>
+
+<div style="display: none" class="slide-template">
+
+
+
+    <div class="data-table">
+
+      {{#each slide}}
+
+      <table>
+        <tbody class="orders-table">
+        <tr>
+          <td class="label-cell" style="width: 60px; padding: 10px">
+
+            {{#if transport.is_rent}}
+            <img src="img/truck_rent.png" style="width: 60px"><br>
+            {{else}}
+            <img src="img/truck.png" style="width: 60px"><br>
+            {{/if}}
+            <span style="font-size: 18px">{{transport.number}}</span><br>
+
+
+          </td>
+          <td class="label-cell order-cells" style="padding: 10px">
+
+            <div class="row">
+              {{#each insets}}
+              {{#if is_empty}}
+              <a href="add_order.html?tr_id={{transport_id}}&tr_name={{transport_name}}&date={{date}}&order_num={{@index}}" class="col-100 order-cell empty">
+                <div style="text-align: center; padding: 15px 0px"><i class="f7-icons icon">add_round</i></div>
+              </a>
+              {{else}}
+              <a href="order.html?id={{id}}" class="col-100 order-cell done">
+                {{#if is_setted}}
+                <div class="status set">не выполнена</div>
+                {{/if}}
+                {{#if is_started}}
+                <div class="status active"><i class="f7-icons icon icon-small">fastforward_fill</i> в процессе</div>
+                {{/if}}
+                {{#if is_done}}
+                <div class="status done"><i class="f7-icons icon icon-small">check</i> выполнена</div>
+                {{/if}}
+                {{#if is_cancel}}
+                <div class="status" style="color:red"><i class="f7-icons icon icon-small">close</i> проблема</div>
+                {{/if}}
+
+                {{#if problem}}
+                <br><b>Проблема: {{problem}}</b>
+                {{/if}}
+
+                <div class="company">{{company_name}}</div>
+                <div class="cargo"><b>погрузка</b> {{load_address}}</div>
+                <div class="cargo"><b>выгрузка</b> {{unload_address}}</div>
+                <div class="cargo">{{cargo_type}}</div>
+              </a>
+              {{/if}}
+              {{/each}}
+            </div>
+
+          </td>
+        </tr>
+
+
+
+        </tbody>
+      </table>
+
+      {{/each}}
+
+      <div style="height: 50px"></div>
+
+    </div>
+
+
+</div>
+
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+
+<script type="text/javascript" src="js/jquery.inputmask.js"></script>
+<script type="text/javascript" src="js/inputmask.js"></script>
+
+<script type="text/javascript" src="js/moment.js"></script>
+
+<script type="text/javascript" src="js/functions.js"></script>
+
+<script type="text/javascript" src="js/template7.min.js"></script>
+<script type="text/javascript" src="js/framework7.min.js"></script>
+
+<script type="text/javascript" src="js/modules/orders.js"></script>
+
+<script type="text/javascript" src="js/modules/user.js"></script>
+<script type="text/javascript" src="js/modules/photos.js"></script>
+
+<script type="text/javascript" src="js/engine.js"></script>
+<script type="text/javascript" src="js/modules/app.js"></script>
+
+<script type="text/javascript" src="js/modules/pages.js"></script>
+
+
+</body>
+
+
+</html>

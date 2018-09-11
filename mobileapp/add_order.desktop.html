@@ -1,0 +1,420 @@
+<!-- Top Navbar-->
+
+<div class="pages">
+  <div data-page="add_order" class="page" id="add_order_page">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <!-- Left part doesn't related to other pages, let's fade it out -->
+        <div class="left sliding">
+          <a href="#" class="link back"><i class="icon icon-back"></i></a>
+        </div>
+        <div class="center sliding navbar-text">
+          Постановка заявки
+        </div>
+        <div class="right sliding">
+          <a href="#" class="button button-big button-fill submit-btn" onPress="orders.addOrder()">Добавить</a>
+        </div>
+      </div>
+    </div>
+    <div class="page-content">
+
+
+      <div style="width: 600px; margin: auto !important;">
+      <form id="add_order">
+
+
+        <div class="list-block" style="padding: 10px">
+
+          <ul>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Транспорт</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <select name="transport_id">
+                  </select>
+                </div>
+              </div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Водитель</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <select name="driver_id">
+                  </select>
+                </div>
+              </div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Дата</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <input type="date" value="" name="date">
+                </div>
+              </div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Промежуток дня</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <select name="order_num">
+                    <option value="0">Утро</option>
+                    <option value="1">Полдень</option>
+                    <option value="2">День</option>
+                    <option value="3">Вечер</option>
+                  </select>
+                </div>
+              </div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Выбрать компанию</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <select name="company_id">
+                    <option value="0">Нет в списке</option>
+                  </select>
+                </div>
+              </div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Название компании</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <input type="text" value="" placeholder="закакзчик перевозки" name="company_name">
+                </div>
+              </div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Прицеп</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <select name="trailer">
+                    <option value="Без прицепа">Без прицепа</option>
+                    <option value="С прицепом">С прицепом</option>
+                  </select>
+                </div>
+              </div>
+            </li>
+
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Адрес прогрузки</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <input type="text" value="" placeholder="адрес погрузки" name="load_address">
+                </div>
+              </div>
+            </li>
+
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Адрес прогрузки 2</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <input type="text" value="" placeholder="адрес погрузки" name="load_address2">
+                </div>
+              </div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Адрес прогрузки 3</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <input type="text" value="" placeholder="адрес погрузки" name="load_address3">
+                </div>
+              </div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Адрес прогрузки 4</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <input type="text" value="" placeholder="адрес погрузки" name="load_address4">
+                </div>
+              </div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Адрес прогрузки 5</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <input type="text" value="" placeholder="адрес погрузки" name="load_address5">
+                </div>
+              </div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Адрес выгрузки</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <input type="text" value="" placeholder="адрес выгрузки" name="unload_address">
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div style="font-weight: bold; margin-top: 30px">Контакты погрузки</div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Контактное лицо 1</div>
+              </div>
+              <div class="col-60">
+                <div class="row">
+                  <div class="col-50">
+                    <div class="item-input">
+                      <input type="text" value="" placeholder="Имя контактного лица" name="contact">
+                    </div>
+                  </div>
+                  <div class="col-50">
+                    <div class="item-input">
+                      <input type="text" value="" placeholder="+7(xxx) xxx xx xx" name="load_phone" class="phone_mask">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Контактное лицо 2</div>
+              </div>
+              <div class="col-60">
+                <div class="row">
+                  <div class="col-50">
+                    <div class="item-input">
+                      <input type="text" value="" placeholder="Имя контактного лица" name="contact2">
+                    </div>
+                  </div>
+                  <div class="col-50">
+                    <div class="item-input">
+                      <input type="text" value="" placeholder="+7(xxx) xxx xx xx" name="load_phone2" class="phone_mask">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Контактное лицо 3</div>
+              </div>
+              <div class="col-60">
+                <div class="row">
+                  <div class="col-50">
+                    <div class="item-input">
+                      <input type="text" value="" placeholder="Имя контактного лица" name="contact3">
+                    </div>
+                  </div>
+                  <div class="col-50">
+                    <div class="item-input">
+                      <input type="text" value="" placeholder="+7(xxx) xxx xx xx" name="load_phone3" class="phone_mask">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div style="font-weight: bold; margin-top: 30px">Контакты разгрузки</div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Контактное лицо 1</div>
+              </div>
+              <div class="col-60">
+                <div class="row">
+                  <div class="col-50">
+                    <div class="item-input">
+                      <input type="text" value="" placeholder="Имя контактного лица" name="contact_unload">
+                    </div>
+                  </div>
+                  <div class="col-50">
+                    <div class="item-input">
+                      <input type="text" value="" placeholder="+7(xxx) xxx xx xx" name="unload_phone" class="phone_mask">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Контактное лицо 2</div>
+              </div>
+              <div class="col-60">
+                <div class="row">
+                  <div class="col-50">
+                    <div class="item-input">
+                      <input type="text" value="" placeholder="Имя контактного лица" name="contact2_unload">
+                    </div>
+                  </div>
+                  <div class="col-50">
+                    <div class="item-input">
+                      <input type="text" value="" placeholder="+7(xxx) xxx xx xx" name="unload_phone2" class="phone_mask">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Контактное лицо 3</div>
+              </div>
+              <div class="col-60">
+                <div class="row">
+                  <div class="col-50">
+                    <div class="item-input">
+                      <input type="text" value="" placeholder="Имя контактного лица" name="contact3_unload">
+                    </div>
+                  </div>
+                  <div class="col-50">
+                    <div class="item-input">
+                      <input type="text" value="" placeholder="+7(xxx) xxx xx xx" name="unload_phone3" class="phone_mask">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div style="font-weight: bold; margin-top: 30px">Стоимость и часы</div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Способ оплаты</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <select name="nds">
+                    <option value="Безнал с НДС">Безнал с НДС</option>
+                    <option value="Безнал без НДС">Безнал без НДС</option>
+                    <option value="Наличный">Наличный</option>
+                  </select>
+                </div>
+              </div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Стоимость заявки</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <input type="number" name="order_price" placeholder="общая цена">
+                </div>
+              </div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Стоимость за час</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <input type="number" name="hour_price" placeholder="руб/час">
+                </div>
+              </div>
+            </li>
+
+            <li class="row">
+              <div class="col-40">
+                <div class="item-title item-spec-title">Количество часов</div>
+              </div>
+              <div class="col-60">
+                <div class="item-input">
+                  <input type="number" name="hours" placeholder="часы водители">
+                </div>
+              </div>
+            </li>
+
+
+          </ul>
+        </div>
+
+
+
+        <div class="content-block-title driver-form" style="font-weight: bold">Груз</div>
+        <div class="list-block">
+          <ul>
+
+            <li class="align-top">
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-input">
+                    <input type="text" maxlength="150" name="cargo_type" placeholder="Тип груза">
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="align-top">
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-input">
+                    <textarea name="cargo_desc" placeholder="Состав груза, описание"></textarea>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+
+
+        <div class="error" style="display:none; padding:10px; clear:both"></div>
+
+
+
+        <div style="padding: 10px">
+
+          <input type="hidden" name="is_update" value="0">
+
+          <a href="#" class="button button-big button-fill submit-btn" onPress="orders.addOrder()">Добавить</a>
+
+        </div>
+        <div style="height: 30px"></div>
+
+      </form>
+      </div>
+
+
+
+    </div>
+
+
+    </div>
+  </div>
+</div>          
